@@ -1,26 +1,328 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=VT323&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-color: #1e1e1e; /* Dark stone */
+  --bg-texture: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20zM20 0h20v20H20V0z' fill='%23191919' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaaaaa;
+  
+  --brand-primary: #3b82f6;
+  --brand-hover: #2563eb;
+  
+  --mc-green: #3ca243;
+  --mc-green-hover: #2d7a32;
+  --mc-green-border: #1e5a22;
+  --mc-green-highlight: #53d05b;
+
+  --mc-gold: #fcc200;
+  
+  --card-bg: #2a2a2a;
+  --card-border: #444444;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--bg-texture);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.minecraft-title {
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  color: var(--mc-gold);
+  text-shadow: 4px 4px 0px #000000;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--brand-hover);
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Minecraft Style Buttons */
+.mc-btn {
+  display: inline-block;
+  background-color: var(--mc-green);
+  color: white !important;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  border: 4px solid var(--mc-green-border);
+  border-top-color: var(--mc-green-highlight);
+  border-left-color: var(--mc-green-highlight);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.mc-btn:hover {
+  background-color: var(--mc-green-hover);
+  border-top-color: var(--mc-green);
+  border-left-color: var(--mc-green);
+}
+
+.mc-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.mc-btn-discord {
+  background-color: #5865F2;
+  border-color: #3b45a3;
+  border-top-color: #727df5;
+  border-left-color: #727df5;
+}
+
+.mc-btn-discord:hover {
+  background-color: #4752c4;
+  border-top-color: #5865F2;
+  border-left-color: #5865F2;
+}
+
+.mc-btn-secondary {
+  background-color: #666666;
+  border-color: #333333;
+  border-top-color: #999999;
+  border-left-color: #999999;
+}
+
+.mc-btn-secondary:hover {
+  background-color: #555555;
+  border-top-color: #666666;
+  border-left-color: #666666;
+}
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mc-card {
+  background-color: var(--card-bg);
+  border: 4px solid var(--card-border);
+  border-top-color: #555555;
+  border-left-color: #555555;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: var(--text-primary) !important;
+}
+
+.mc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.card-img-wrapper {
+  aspect-ratio: 16/9;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 4px solid var(--card-border);
+  position: relative;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.mc-card:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  color: var(--mc-gold);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.card-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Page Layouts */
+.header-section {
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 4px solid var(--card-border);
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header-info {
+  max-width: 800px;
+  margin: 1.5rem auto 2rem auto;
+  font-size: 1.1rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo-box {
+  width: 80px;
+  height: 80px;
+  background-color: #333;
+  border: 4px solid #555;
+  border-right-color: #222;
+  border-bottom-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'VT323', monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--mc-gold);
+}
+
+/* Detail Page */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 1024px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .adsense-placeholder {
+    display: none !important;
+  }
+}
+
+.adsense-placeholder {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px dashed #555;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-content {
+  background-color: var(--card-bg);
+  border: 4px solid var(--card-border);
+  padding: 2rem;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+.detail-header {
+  margin-bottom: 2rem;
+}
+
+.back-btn-wrapper {
+  margin-bottom: 2rem;
+}
+
+.detail-cover {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border: 4px solid #111;
+  margin-bottom: 2rem;
+}
+
+.markdown-body {
+  color: var(--text-primary);
+}
+
+.markdown-body h1 {
+  font-size: 2.2rem;
+  color: var(--mc-gold);
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  color: #fff;
+}
+
+.markdown-body p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body li {
+  margin-bottom: 0.5rem;
+}
+
+.download-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #444;
+  text-align: center;
 }

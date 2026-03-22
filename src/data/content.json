@@ -1,0 +1,19 @@
+[
+  {
+    "slug": "pvp-practice",
+    "name": "Pvp Practice",
+    "shortDescription": "You can practice pvp on this map.",
+    "markdownFile": "/projects/pvp.md",
+    "coverImage": "/projects/pvp.webp",
+    "downloadUrl": "/projects/pvp.zip"
+  },
+  {
+    "slug": "paintball",
+    "name": "Paintball",
+    "shortDescription": "Have you ever wanted to play paintball with your friends in Minecraft? Then this map is for you!",
+    "markdownFile": "/projects/paintball.md",
+    "coverImage": "/projects/paintball.webp",
+    "downloadUrl": "/projects/paintball.zip",
+    "resourcePackUrl": "/projects/paintball_rp.zip"
+  }
+]
